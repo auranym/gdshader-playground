@@ -4,7 +4,8 @@
   "description": "Web-based editor for Godot canvas shaders.",
   "main": "app.html",
   "scripts": {
-    "start": "nodemon --exec \"npx http-server -c-1\""
+    "start": "nodemon --exec \"npx http-server -c-1\"",
+    "build": "cp src/app_shell/app-shell.html src/godot_app/app-shell.html && godot.exe --headless --path src/godot_app --export-release godot_app ../../index.html && rm src/godot_app/app-shell.html && rm index.audio.worklet.js"
   },
   "keywords": [
     "godot",
