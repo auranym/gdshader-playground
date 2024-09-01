@@ -1,0 +1,22 @@
+{
+  "name": "gdshadertoy",
+  "version": "1.0.0",
+  "description": "Web-based editor for Godot canvas shaders.",
+  "main": "app.html",
+  "scripts": {
+    "start": "nodemon --exec \"npx http-server -c-1\""
+  },
+  "keywords": [
+    "godot",
+    "shader",
+    "web",
+    "editor",
+    "playground"
+  ],
+  "author": "auranym",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "nodemon": "^3.1.4"
+  }
+}

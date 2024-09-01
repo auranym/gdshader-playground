@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" class="no-mar-pad">
+
+<head>
+  <title>GDShaderToy</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="./app.css" />
+  <!-- Dependency scripts -->
+  <script src="./$GODOT_URL"></script>
+  <script src="./godot-app-buffer.js"></script>
+  <script>
+    // Define engine globally
+    const ENGINE = new Engine($GODOT_CONFIG);
+  </script>
+  <!-- Main logic script -->
+  <script defer src="./app-shell.js"></script>
+</head>
+
+<body class="no-mar-pad">
+  <canvas id="canvas" width="300" height="300"></canvas>
+</body>
+
+</html>
