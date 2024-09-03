@@ -1,23 +1,119 @@
+:root {
+  /* Lifted directly from godotengine.org. */
+  --default-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  --header-font-family: "Montserrat", sans-serif;
+  --base-color: #25282b;
+  --base-color-text: hsla(0, 0%, 100%, 0.9);
+  --base-color-text-hl: hsla(0, 0%, 100%, 1);
+  --button-background-color: #333639;
+  --link-color: hsl(200, 60%, 70%);
+  --link-underline-color: hsla(200, 60%, 70%, 0.3);
+}
+
+*:focus {
+  outline: .125rem solid #4080ff;
+}
+
 html {
   height: 100vh;
   width: 100vw;
-  color: white;
-  background-color: #363d52;
+  color: var(--base-color-text);
+  background-color: var(--base-color);
+  font-family: var(--default-font-family);
+  font-size: 18px;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  width: 100%;
-  height: 100%;
+  overflow-x: hidden;
+}
+
+main,
+header {
   display: flex;
+  flex-direction: column;
   align-items: center;
 }
 
-canvas {
-  outline: 4px solid #212532;
-  margin: 32px;
+main {
+  margin: 16px 32px;
+  padding: 0;
+  gap: 16px;
 }
 
-.no-mar-pad {
-  margin: 0;
+h1 {
+  color: var(--base-color-text-hl);
+  font-family: var(--header-font-family);
+  font-size: 36px;
+  font-weight: 800;
+}
+
+header {
+  margin: 0 0 32px;
   padding: 0;
+}
+
+header p {
+  margin: 0 32px;
+}
+
+a {
+  outline: none;
+  color: var(--link-color);
+  text-decoration: underline;
+  text-decoration-color: var(--link-underline-color);
+  text-decoration-thickness: .125rem;
+}
+
+a:hover {
+  filter: brightness(117.5%);
+}
+
+main>div:first-child {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 16px;
+}
+
+canvas {
+  margin: 8px;
+  outline: 8px solid rgb(57 59 61);
+  border-radius: 8px;
+}
+
+main>div:first-child>button {
+  color: var(--base-color-text);
+  background-color: var(--button-background-color);
+  font-size: 18px;
+  font-weight: 700;
+  border: none;
+  padding: 16px 32px;
+  display: inline-block;
+  text-decoration: none;
+}
+
+main>div:first-child>button:hover {
+  filter: brightness(117.5%);
+}
+
+main>div:first-child>button:active {
+  filter: brightness(82.5%);
+}
+
+ace-editor {
+  width: 100%;
+  margin-bottom: 32px;
+}
+
+@media (min-width: 800px) {
+  .desktop main {
+    flex-direction: row;
+    align-items: start;
+  }
 }

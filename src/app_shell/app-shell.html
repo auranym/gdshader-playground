@@ -1,23 +1,43 @@
 <!DOCTYPE html>
-<html lang="en" class="no-mar-pad">
+<html lang="en">
 
 <head>
   <title>GDShaderToy</title>
   <meta charset="UTF-8">
-  <link rel="stylesheet" href="./src/app_shell//app-shell.css" />
-  <!-- Dependency scripts -->
+  <!-- Godot app script -->
   <script src="./$GODOT_URL"></script>
-  <script>
-    // Define engine globally
-    window.ENGINE = new Engine($GODOT_CONFIG);
-  </script>
-  <!-- Main logic script -->
+  <!-- App shell page script -->
   <script defer src="./src/app_shell/app-shell.js"></script>
+  <!-- Define engine globally (this must be part of the HTML template) -->
+  <script>window.ENGINE = new Engine($GODOT_CONFIG);</script>
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="./src/app_shell//app-shell.css" />
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <!-- Code editor web component -->
+  <script src="https://cdn.jsdelivr.net/gh/MarketingPipeline/Ace-Editor-Web-Component@1.0.2/dist/ace-editor-wc.min.js" defer></script> 
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/MarketingPipeline/Ace-Editor-Web-Component@v1.0.2/dist/ace-editor-wc.min.css">
+
 </head>
 
-<body class="no-mar-pad">
-  <canvas id="canvas" width="300" height="300"></canvas>
-  <p></p>
+<body>
+  <header>
+    <h1>GDShader Playground</h1>
+    <p>An online editor for <a href="https://godotengine.org/" target="_blank" rel="noopener noreferrer">Godot</a> post-processing shaders</p>
+  </header>
+  <main>
+    <div>
+      <canvas id="canvas" width="300" height="300"></canvas>
+      <button>Update</button>
+    </div>
+    <ace-editor language="glsl">void fragment() {
+  COLOR = texture(TEXTURE, UV); // Read from texture
+  COLOR.b = 1.0; // Set blue channel to 1.0
+}
+</ace-editor>
+  </main>
 </body>
 
 </html>

@@ -1,5 +1,5 @@
 {
-  "name": "gdshadertoy",
+  "name": "gdshader-playground",
   "version": "1.0.0",
   "description": "Web-based editor for Godot canvas shaders.",
   "main": "app.html",
