@@ -1,14 +1,25 @@
 extends Control
 
-@onready var _label: Label = $SubViewportContainer/SubViewport/Label
-var _update_ref = JavaScriptBridge.create_callback(_update)
+var _update_ref: JavaScriptObject
+var _shader: Shader
 
 
 func _ready() -> void:
-	var window = JavaScriptBridge.get_interface("window")
-	window.updateApp = _update_ref
+	if OS.has_feature("web"):
+		_update_ref = JavaScriptBridge.create_callback(_update)
+		var window = JavaScriptBridge.get_interface("window")
+		window.updateApp = _update_ref
+		_shader = Shader.new()
+		$SubViewportContainer.material.shader = _shader
+	else:
+		print("Platform is not web.")
 
 
 func _update(_args):
-	var window = JavaScriptBridge.get_interface("window")
-	_label.text = window.shaderCode
+	if OS.has_feature("web"):
+		var window = JavaScriptBridge.get_interface("window")
+		window.listenForConsole()
+		_shader.code = window.shaderCode
+		window.stopListeningForConsole()
+	else:
+		print("Platform is not web.")

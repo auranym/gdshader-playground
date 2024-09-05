@@ -5,9 +5,10 @@
   --base-color: #25282b;
   --base-color-text: hsla(0, 0%, 100%, 0.9);
   --base-color-text-hl: hsla(0, 0%, 100%, 1);
-  --button-background-color: #333639;
+  --panel-background-color: #333639;
   --link-color: hsl(200, 60%, 70%);
   --link-underline-color: hsla(200, 60%, 70%, 0.3);
+  --border-radius: 8px;
 }
 
 *:focus {
@@ -51,11 +52,13 @@ h1 {
   font-family: var(--header-font-family);
   font-size: 36px;
   font-weight: 800;
+  text-align: center;
 }
 
 header {
-  margin: 0 0 32px;
+  margin: 0 16px 32px;
   padding: 0;
+  text-align: center;
 }
 
 header p {
@@ -74,22 +77,31 @@ a:hover {
   filter: brightness(117.5%);
 }
 
-main>div:first-child {
+main>div {
   display: flex;
-  align-items: center;
   flex-direction: column;
   gap: 16px;
+}
+
+main>div:first-child {
+  align-items: center;
+}
+
+main>div:nth-child(2) {
+  width: 100%;
 }
 
 canvas {
   margin: 8px;
   outline: 8px solid rgb(57 59 61);
-  border-radius: 8px;
+  border-radius: var(--border-radius);
+  max-width: calc(80vw - 16px);
+  max-height: calc(80vw - 16px);
 }
 
 main>div:first-child>button {
   color: var(--base-color-text);
-  background-color: var(--button-background-color);
+  background-color: var(--panel-background-color);
   font-size: 18px;
   font-weight: 700;
   border: none;
@@ -102,13 +114,27 @@ main>div:first-child>button:hover {
   filter: brightness(117.5%);
 }
 
-main>div:first-child>button:active {
+main>div:first-child>button:active,
+main>div:first-child>button:disabled {
   filter: brightness(82.5%);
 }
 
 ace-editor {
   width: 100%;
   margin-bottom: 32px;
+}
+
+#error {
+  margin: 0;
+  padding: 16px;
+  color: #ef6767;
+  background-color: var(--panel-background-color);
+  font-size: 14px;
+  border-radius: var(--border-radius);
+}
+
+#error[data-is-error="false"] {
+  display: none;
 }
 
 @media (min-width: 800px) {
